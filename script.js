@@ -56,16 +56,29 @@ var tekenAlles = function () {
   // kogel
 
   // speler
+  // body
+
   fill("yellow");
-  rect(spelerX, spelerY, 20, 35);
+
+
+  // ogen
+  ellipse(spelerX + 15, spelerY + 20, 50, 40);
   fill("black");
-  ellipse(spelerX + 10, spelerY, 30, 30);
-  fill("darkblue");
-  rect(spelerX + 10, spelerY + 30, 10, 20);
-  fill("darkblue");
-  rect(spelerX, spelerY + 30, 10, 20);
+  ellipse(spelerX, spelerY + 15, 10, 10);
+  fill("black");
+  ellipse(spelerX + 30, spelerY + 15, 10, 10);
   fill("white");
-  ellipse(spelerX, spelerY, 10, 10)
+  ellipse(spelerX - 3, spelerY + 15, 5, 5);
+  fill("white");
+  ellipse(spelerX + 33, spelerY + 15, 5, 5);
+
+
+  // mond
+  line(spelerX+5, spelerY+30, spelerX + 25, spelerY+30);
+
+
+
+ 
 
 
 
