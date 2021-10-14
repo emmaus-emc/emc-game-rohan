@@ -17,6 +17,8 @@ var spelStatus = SPELEN;
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 
+var vijandX = 600;
+var vijandY = 0;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -26,16 +28,19 @@ var spelerY = 600; // y-positie van speler
  */
 var beweegAlles = function () {
   // vijand
+  vijandY=vijandY+2
+  if (vijandY>680) {
+    vijandY=-5
+  }
 
-    if (KeyIsDown(38)) {spelerY -= 5; }
-    if (KeyIsDown(37)) {spelerX -= 5; }
-    if (KeyIsDown(39)) {spelerX -= 5; }
-    if (KeyIsDown(40)) {spelerY -= 5; }
-   
+    
   // kogel
 
   // speler
-
+  if (keyIsDown(38)) {spelerY -= 20 }
+  if (keyIsDown(37)) {spelerX -= 20 }
+  if (keyIsDown(39)) {spelerX += 20 }
+  if (keyIsDown(40)) {spelerY += 20 }
 };
 
 /**
@@ -44,8 +49,18 @@ var beweegAlles = function () {
  * Updatet globale variabelen punten en health
  */
 var verwerkBotsing = function () {
-  // botsing speler tegen vijand
+// botsing speler tegen muur
+  if (spelerY > 675){
+    spelerY = 675;}
+   if (spelerX > 1240){
+     spelerX = 1240;}
+     if (spelerX < 10){
+      spelerX = 10;}
+      if (spelerY < 5){
+        spelerY = 5;}
 
+
+  // botsing speler tegen vijand
   // botsing kogel tegen vijand
 
 };
@@ -55,19 +70,46 @@ var verwerkBotsing = function () {
  */
 var tekenAlles = function () {
   // achtergrond
+fill("lightblue");
+rect(0,0,1280,720);
+ 
 
-  // vijand
+
+
+// body vijand
+
+  fill("grey");
+  ellipse(vijandX + 15, vijandY + 20, 40, 50);
+
+  //ogen vijand
+  fill("black");
+  ellipse(vijandX, vijandY + 15, 10, 10);
+  fill("black");
+  ellipse(vijandX + 30, vijandY + 15, 10, 10);
+  fill("white");
+  ellipse(vijandX - 3, vijandY + 15, 5, 5);
+  fill("white");
+  ellipse(vijandX + 33, vijandY + 15, 5, 5);
+
+  //mond vijand
+  fill("pink");
+  ellipse(vijandX + 15, vijandY + 25, 20, 20);
+
+
+
+
+
 
   // kogel
 
   // speler
   // body
-
+  
   fill("yellow");
-
+  ellipse(spelerX + 15, spelerY + 20, 50, 50);
 
   // ogen
-  ellipse(spelerX + 15, spelerY + 20, 50, 40);
+
   fill("black");
   ellipse(spelerX, spelerY + 15, 10, 10);
   fill("black");
@@ -80,11 +122,6 @@ var tekenAlles = function () {
 
   // mond
   line(spelerX+5, spelerY+30, spelerX + 25, spelerY+30);
-
-
-
- 
-
 
 
   // punten en health
@@ -108,12 +145,13 @@ var checkGameOver = function () {
  * de code in deze functie wordt één keer uitgevoerd door
  * de p5 library, zodra het spel geladen is in de browser
  */
+
+
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('lightblue');
 }
 
 /**
