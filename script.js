@@ -16,9 +16,17 @@ var spelStatus = SPELEN;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
-var HP = 10;
+var HP = 100;
 var vijandX = 600;
 var vijandY = 0;
+var HPX = 1100;
+var HPY = 30;
+var punten = 0;
+
+
+
+
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -64,8 +72,10 @@ var verwerkBotsing = function () {
 
       if (vijandX-spelerX < 50 && vijandX-spelerX > -50 && vijandY-spelerY < 50 && vijandY-spelerY > -50) {
         console.log("botsing")
+      if (HP>0){HP -= round(1);
+       } 
+      
       }
-
     };
 
   // botsing kogel tegen vijand
@@ -132,13 +142,20 @@ rect(0,0,1280,720);
 
   // punten en health
 fill("green")
-rect(1100, 30, 150, 50)
+rect(HPX, HPY, 150, 50)
 
 fill("black");
 textSize(50);
-text(HP, 1150, 70);
+textAlign(RIGHT);
+text(HP, HPX+150, HPY+40);
 
+fill("lightgreen")
+rect(HPX, HPY+50, 150, 50)
 
+fill("black");
+textSize(50);
+textAlign(RIGHT);
+text(punten, HPX+150, HPY+90);
 
 
 };
