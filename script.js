@@ -80,7 +80,9 @@ var verwerkBotsing = function () {
 
   // botsing kogel tegen vijand
 
+  // punten
 
+  punten = punten + 0.02;
 /**
  * Tekent spelscherm
  */
@@ -155,10 +157,9 @@ rect(HPX, HPY+50, 150, 50)
 fill("black");
 textSize(50);
 textAlign(RIGHT);
-text(punten, HPX+150, HPY+90);
-
-
+text( floor(punten), HPX+150, HPY+90);
 };
+
 
 /**
  * return true als het gameover is
